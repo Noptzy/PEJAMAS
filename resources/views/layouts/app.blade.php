@@ -1,3 +1,6 @@
+{{-- ini mah yang bootstreap auth bukan layouts kita --}}
+
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
