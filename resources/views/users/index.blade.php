@@ -16,7 +16,15 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->roles->role }}</td>
-                <td> <button type="button" class="btn btn-secondary">Edit</button> <button type="button" class="btn btn-danger">Delete</button></td>
+                <td>
+                <button type="button" class="btn btn-secondary">Edit</button>
+                    
+                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
 
