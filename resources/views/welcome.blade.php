@@ -17,28 +17,11 @@
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="#hero" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="{{route('login')}}">Login</a></li>
+            <li><a href="#about">Tentang Kami</a></li>
+            <li><a href="#services">Pelayanan</a></li>
             <li><a href="#team">Team</a></li>
-            <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Dropdown 1</a></li>
-                <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                  <ul>
-                    <li><a href="#">Deep Dropdown 1</a></li>
-                    <li><a href="#">Deep Dropdown 2</a></li>
-                    <li><a href="#">Deep Dropdown 3</a></li>
-                    <li><a href="#">Deep Dropdown 4</a></li>
-                    <li><a href="#">Deep Dropdown 5</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Dropdown 2</a></li>
-                <li><a href="#">Dropdown 3</a></li>
-                <li><a href="#">Dropdown 4</a></li>
-              </ul>
-            </li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact">Kontak</a></li>
+            <li><a href="{{route('login')}}">Login</a></li> 
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -57,8 +40,8 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
-            <h1>Welcome to <span>PEJAMAS</span></h1>
-            <p>We are team of talented designers making websites with Bootstrap</p>
+            <h1>Selamat Datang Di <span>PEJAMAS</span></h1>
+            <p>Pejamas (Pengaduan Jalan Masyarakt)</p>
             <div class="d-flex">
               <a href="{{route('login')}}" class="btn-get-started">Login Untuk Memulai</a>
              </div>
@@ -78,7 +61,7 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-activity icon"></i></div>
-              <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
+              <h4><a href="" class="stretched-link">Terhubung</a></h4>
               <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
             </div>
           </div><!-- End Service Item -->
@@ -86,16 +69,16 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-              <h4><a href="" class="stretched-link">Sed ut perspici</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <h4><a href="" class="stretched-link">Terorganisir</a></h4>
+              <p>Sistem Kami Terorganisir Mulai Dari Warga/User, Administrator dan Petugas</p>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-              <h4><a href="" class="stretched-link">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <h4><a href="" class="stretched-link">Up To Date</a></h4>
+              <p>Kami Selalu Mengupdate Pengaduan Yang Anda Berikan</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -118,8 +101,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p><span>Find Out More</span> <span class="description-title">About Us</span></p>
+        <h2>Tentang Kami</h2>
+        <p><span>Lebih Banyak </span> <span class="description-title">Tentang Kami.</span></p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -132,31 +115,28 @@
 
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="about-content ps-0 ps-lg-3">
-              <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+              <h3>Tentang PEJAMAS</h3>
               <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                PEJAMAS (Pengaduan Jalan Masyarakat) adalah platform digital yang dirancang untuk memudahkan masyarakat dalam mengirimkan pengaduan terkait kerusakan jalan. Melalui PEJAMAS, warga dapat melaporkan masalah jalan yang membutuhkan perbaikan, yang kemudian akan ditindaklanjuti oleh pemerintah setempat bekerja sama dengan pihak ketiga yang telah ditunjuk. Kami berkomitmen untuk meningkatkan kualitas infrastruktur jalan demi kenyamanan dan keselamatan masyarakat.
               </p>
               <ul>
                 <li>
                   <i class="bi bi-diagram-3"></i>
                   <div>
-                    <h4>Ullamco laboris nisi ut aliquip consequat</h4>
-                    <p>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade</p>
+                    <h4>Pelaporan Mudah.</h4>
+                    <p>Kirim laporan kerusakan jalan dengan cepat dan mudah melalui platform kami</p>
                   </div>
                 </li>
                 <li>
                   <i class="bi bi-fullscreen-exit"></i>
                   <div>
-                    <h4>Magnam soluta odio exercitationem reprehenderi</h4>
-                    <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</p>
+                    <h4>Tindak Lanjut Transparan</h4>
+                    <p>Lacak status pengaduan Anda dan lihat perkembangan perbaikannya</p>
                   </div>
                 </li>
               </ul>
               <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum
+                Mari bergabung dengan PEJAMAS dan jadilah bagian dari solusi untuk infrastruktur jalan yang lebih baik!
               </p>
             </div>
 
@@ -167,68 +147,7 @@
 
     </section><!-- /About Section -->
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills section">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row skills-content skills-animation">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>HTML</span> <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>CSS</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>JavaScript</span> <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>PHP</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>WordPress/CMS</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Photoshop</span> <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Skills Section -->
 
     <!-- Stats Section -->
     <section id="stats" class="stats section">
@@ -264,8 +183,9 @@
           <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
             <i class="bi bi-people"></i>
             <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hard Workers</p>
+              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Kelompok
+              </p>
             </div>
           </div><!-- End Stats Item -->
 

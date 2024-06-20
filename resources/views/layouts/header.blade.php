@@ -4,7 +4,7 @@
     <title>Pejamas</title>
   
     <!-- Favicons -->
-    <link href="{{ asset ('BizLand/assets/img/favicon.png')}}" rel="icon">
+    <link href="{{ asset ('BizLand/Pejamas Icon.png')}}" rel="icon">
     <link href="{{ asset('BizLand/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
   
     <!-- Fonts -->
