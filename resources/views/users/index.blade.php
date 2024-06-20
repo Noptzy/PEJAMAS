@@ -16,7 +16,7 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->roles->role }}</td>
-                <td> <button type="button" class="btn btn-secondary">Secondary</button> <button type="button" class="btn btn-danger">Danger</button></td>
+                <td> <button type="button" class="btn btn-secondary">Edit</button> <button type="button" class="btn btn-danger">Delete</button></td>
             </tr>
         @endforeach
 
