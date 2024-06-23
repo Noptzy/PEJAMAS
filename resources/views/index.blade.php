@@ -21,7 +21,7 @@
             <li><a href="#services">Pelayanan</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#contact">Kontak</a></li>
-            <li><a href="{{route('login')}}">Login</a></li> 
+            <li><a href="{{ route('login') }}">Login</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -43,7 +43,7 @@
             <h1>Selamat Datang Di <span>PEJAMAS</span></h1>
             <p>Pejamas (Pengaduan Jalan Masyarakt)</p>
             <div class="d-flex">
-              <a href="{{route('login')}}" class="btn-get-started">Login Untuk Memulai</a>
+              <a href="{{ route('login') }}" class="btn-get-started">Login Untuk Memulai</a>
              </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
 
     </section><!-- /Hero Section -->
 
-  
+
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -108,9 +108,9 @@
       <section id="featured-services" class="featured-services section">
 
         <div class="container">
-  
+
           <div class="row gy-4">
-  
+
             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
               <div class="service-item position-relative">
                 <div class="icon"><i class="bi bi-activity icon"></i></div>
@@ -118,7 +118,7 @@
                 <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
               </div>
             </div><!-- End Service Item -->
-  
+
             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
               <div class="service-item position-relative">
                 <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
@@ -126,7 +126,7 @@
                 <p>Sistem Kami Terorganisir Mulai Dari Warga/User, Administrator dan Petugas</p>
               </div>
             </div><!-- End Service Item -->
-  
+
             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
               <div class="service-item position-relative">
                 <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
@@ -135,9 +135,9 @@
               </div>
             </div><!-- End Service Item -->
           </div>
-  
+
         </div>
-  
+
       </section><!-- /Featured Services Section -->
     <!-- Services Section -->
     <section id="services" class="services section">
@@ -507,7 +507,7 @@
             <li><i class="bi bi-chevron-right"></i> <a href="#service">Pelayanan</a></li>
             <li><i class="bi bi-chevron-right"></i> <a href="#team">Team</a></li>
             <li><i class="bi bi-chevron-right"></i> <a href="#contact">Kontak</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="{{route('login')}}">Login</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="">Login</a></li>
           </ul>
         </div>
 
