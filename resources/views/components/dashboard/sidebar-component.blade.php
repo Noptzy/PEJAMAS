@@ -16,7 +16,7 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
+        <li class="menu-item {{ request()->is('dashboard') ? 'active' : '' }}">
             <a href="{{ route('dashboard.home') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -27,7 +27,7 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Pages</span></li>
         @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
         <!-- Users -->
-        <li class="menu-item">
+        <li class="menu-item {{ request()->is('dashboard/users') ? 'active' : '' }}">
             <a href="{{ route('dashboard.users.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Basic">Users</div>

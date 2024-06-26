@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Users\StoreRequest;
+use App\Http\Requests\Users\UpdateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,12 +15,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('role_id', 3)->get();
+        $users = User::where('role_id', 3)->paginate(10);
+        $user = null;
         if(Auth::user()->role_id == 1)
         {
-            $users = User::where('role_id', '!=', 1)->get();
+            $users = User::where('role_id', '!=', 1)->paginate(10);
         }
-        return view ('dashboard.users.index',compact('users'));
+        return view('dashboard.users.index',compact('users','user'));
     }
 
     /**
@@ -33,17 +35,21 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        User::create($request->all());
+        return back()->with(['success' => 'Successfully Add User']);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id = null)
     {
-        //
+        $user = $id ? User::findOrFail($id) : null;
+        $title = $id ? "Update User" : "Add User";
+        $method = $id ? 'PUT' : 'POST';
+        return view('dashboard.users.modal', compact('user', 'title', 'method'))->render();
     }
 
     /**
@@ -57,9 +63,12 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return back()->with(['success' => 'Successfully Update User']);
+
     }
 
     /**
@@ -69,7 +78,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('users.index')->with(['success', 'User delete successfully']);
-
+        return back()->with(['success', 'Successfully Delete User']);
     }
 }

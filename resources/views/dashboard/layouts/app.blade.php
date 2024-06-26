@@ -93,8 +93,6 @@
     @else
         @yield('content')
     @endauth
-    <!-- Core JS -->
-     @stack('custom-js')
     <!-- build:js Dashboard/vendor/js/core.js -->
     <script src="{{ asset('Dashboard/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ asset('Dashboard/vendor/libs/popper/popper.js') }}"></script>
@@ -115,5 +113,8 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Core JS -->
+    <script src="{{ asset('Dashboard/js/ui-toasts.js') }}"></script>
+     @stack('custom-js')
   </body>
 </html>
