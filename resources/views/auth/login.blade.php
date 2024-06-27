@@ -5,7 +5,7 @@ Pejamas | Login
 @endsection
 
 @push('custom-css')
-<link rel="stylesheet" href="{{ asset('Dashboard/vendor/css/pages/page-auth.css') }}" />
+<link rel="stylesheet" href="{{ asset('backend/vendor/css/pages/page-auth.css') }}" />
 @endpush
 
 @section('content')
