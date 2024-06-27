@@ -6,7 +6,7 @@
   class="@auth light-style layout-menu-fixed @else light-style customizer-hide @endauth"
   dir="ltr"
   data-theme="theme-default"
-  data-assets-path="{{ asset('Dashboard') }}"
+  data-assets-path="{{ asset('Backend') }}"
   data-template="vertical-menu-template-free"
 >
   <head>
@@ -34,26 +34,26 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="{{ asset('Dashboard/vendor/fonts/boxicons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('Backend/vendor/fonts/boxicons.css') }}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('Dashboard/vendor/css/core.css') }}" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('Dashboard/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{ asset('Dashboard/css/demo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('Backend/vendor/css/core.css') }}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('Backend/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('Backend/css/demo.css') }}" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ asset('Dashboard/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('Backend/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
-    <link rel="stylesheet" href="{{ asset('Dashboard/vendor/libs/apex-charts/apex-charts.css') }}" />
+    <link rel="stylesheet" href="{{ asset('Backend/vendor/libs/apex-charts/apex-charts.css') }}" />
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="{{ asset('Dashboard/vendor/js/helpers.js') }}"></script>
+    <script src="{{ asset('Backend/vendor/js/helpers.js') }}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{ asset('Dashboard/js/config.js') }}"></script>
+    <script src="{{ asset('Backend/js/config.js') }}"></script>
     @stack('custom-css')
   </head>
 
@@ -64,11 +64,11 @@
       <div class="layout-container">
         <!-- Menu -->
          <!-- sidebar disini -->
-         <x-dashboard.sidebar-component/>
+         <x-Dashboard.sidebar-component/>
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
-          <x-dashboard.navbar-component />
+          <x-Dashboard.navbar-component />
           <!-- / Navbar -->
 
           <!-- Content wrapper -->
@@ -77,7 +77,7 @@
              @yield('content')
             <!-- / Content -->
 
-            <x-dashboard.footer-component />
+            <x-Dashboard.footer-component />
 
             <div class="content-backdrop fade"></div>
           </div>
@@ -93,28 +93,28 @@
     @else
         @yield('content')
     @endauth
-    <!-- build:js Dashboard/vendor/js/core.js -->
-    <script src="{{ asset('Dashboard/vendor/libs/jquery/jquery.js') }}"></script>
-    <script src="{{ asset('Dashboard/vendor/libs/popper/popper.js') }}"></script>
-    <script src="{{ asset('Dashboard/vendor/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('Dashboard/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+    <!-- build:js Backend/vendor/js/core.js -->
+    <script src="{{ asset('Backend/vendor/libs/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('Backend/vendor/libs/popper/popper.js') }}"></script>
+    <script src="{{ asset('Backend/vendor/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('Backend/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
-    <script src="{{ asset('Dashboard/vendor/js/menu.js') }}"></script>
+    <script src="{{ asset('Backend/vendor/js/menu.js') }}"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="{{ asset('Dashboard/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+    <script src="{{ asset('Backend/vendor/libs/apex-charts/apexcharts.js') }}"></script>
 
     <!-- Main JS -->
-    <script src="{{ asset('Dashboard/js/main.js') }}"></script>
+    <script src="{{ asset('Backend/js/main.js') }}"></script>
 
     <!-- Page JS -->
-    <script src="{{ asset('Dashboard/js/dashboards-analytics.js') }}"></script>
+    <script src="{{ asset('Backend/js/Backends-analytics.js') }}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Core JS -->
-    <script src="{{ asset('Dashboard/js/ui-toasts.js') }}"></script>
+    <script src="{{ asset('Backend/js/ui-toasts.js') }}"></script>
      @stack('custom-js')
   </body>
 </html>
