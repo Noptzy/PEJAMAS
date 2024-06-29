@@ -20,7 +20,7 @@ class UserDetail extends Model
 
     protected function getCompleteAddressAttribute()
     {
-        return $this->address . ', ' .$this->state. ',' . $this->zip_code;
+        return $this->address . ', ' .$this->state. ', ' . $this->zip_code;
     }
 
     protected function getImageUrlAttribute()

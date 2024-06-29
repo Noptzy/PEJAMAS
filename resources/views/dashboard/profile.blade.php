@@ -24,7 +24,7 @@ Pejamas | Account
                     @csrf
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                            <img src="{{ $user->details->image_url ?? asset('backend/img/avatars/profile.png') }}"
+                            <img src="{{ $user->details?->image_url ?? asset('backend/img/avatars/profile.png') }}"
                             alt="user-avatar"
                             class="d-block rounded"
                             height="100"
@@ -34,7 +34,7 @@ Pejamas | Account
                                 <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                                     <span class="d-none d-sm-block">Upload new photo</span>
                                     <i class="bx bx-upload d-block d-sm-none"></i>
-                                    <input type="file" id="upload" name="image" class="account-file-input" hidden accept="image/*" />
+                                    <input type="file" id="upload" name="image" class="account-file-input d-none" accept="image/*" />
                                 </label>
                                 <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
                                     <i class="bx bx-reset d-block d-sm-none"></i>
@@ -97,7 +97,7 @@ Pejamas | Account
                                 </div>
                                 <div class="mb-3 col-md-6">
                                 <label for="genderSelect" class="form-label">Gender</label>
-                                    <select class="form-select" id="genderSelect" name="gender" aria-label="Default select example">
+                                    <select class="form-select @error('gender') is-invalid @enderror" id="genderSelect" name="gender" aria-label="Default select example">
                                         <option disabled selected>Select</option>
                                         <option value="L" @selected($user->details?->gender == 'L')>Man</option>
                                         <option value="P" @selected($user->details?->gender == 'P')>Woman</option>
