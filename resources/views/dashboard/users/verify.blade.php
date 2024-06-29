@@ -53,7 +53,7 @@
     <form action="{{ route('dashboard.users.verifyAction', ['id' => $user->id]) }}" method="POST">
         @csrf
         <input type="hidden" value="1" name="status">
-        <button class="btn @if(!$user->details) btn-secondary @else btn-outline-primary @endif" type="submit" disabled="@if(!$user->details) true @endif">
+        <button class="btn @if(!$user->details) btn-secondary @else btn-outline-primary @endif" type="submit" @if(!$user->details) disabled @endif">
             Apply
         </button>
     </form>
