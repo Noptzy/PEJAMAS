@@ -4,7 +4,7 @@
             <span class="app-brand-logo demo">
                 <img src="{{ asset('BizLand/Pejamas Icon.png') }}" alt="pejamas logo" style="width: 20px;" class="w-10 p-0 m-0">
             </span>
-            <span class="app-brand-text demo text-body fw-bolder pl-10">ejamas</span>
+            <span class="app-brand-text demo text-body pl-10">ejamas</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
