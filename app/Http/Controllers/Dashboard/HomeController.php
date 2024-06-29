@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\UpdateProfileRequest;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
-use Str;
 
 class HomeController extends Controller
 {
@@ -64,8 +63,7 @@ class HomeController extends Controller
 
             return back()->with('success', 'Succefully update profile');
         } catch (\Throwable $th) {
-            dd($th->getMessage());
-            return back()->with('errors', $th->getMessage());
+            return back()->with('error', $th->getMessage());
         }
     }
 
