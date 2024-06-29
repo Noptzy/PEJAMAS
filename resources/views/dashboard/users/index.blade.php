@@ -5,10 +5,10 @@ Pejamas | Users
 @endsection
 
 @section('content')
-@if ($message = Session::get('success'))
-    <x-toast-component :bg="'bg-success'" :type="'Success'" :message="$message" />
-@endif
-@if ($errors->any())
+@if ($errors->any() || $errors)
+    @if(!$errors->any)
+        <x-toast-component :bg="'bg-danger'" :type="'Failed'" :message="$error" />
+    @endif
     @foreach ($errors->all() as $key => $error)
         <x-toast-component :bg="'bg-danger'" :type="'Failed'" :message="$error" />
     @endforeach

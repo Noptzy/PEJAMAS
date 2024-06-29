@@ -12,14 +12,23 @@
     <div class="row">
         <div class="col mb-3">
             <label for="nameWithTitle" class="form-label">Name</label>
-            <input type="text" id="nameWithTitle" name="name" class="form-control" required value="{{ old('name') }}" placeholder="Enter Name" />
+            <input type="text" id="nameWithTitle" name="name" class="form-control @error('name') is-invalid @enderror" required value="{{ old('name') }}" placeholder="Enter Name" />
+            @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
     </div>
     <div class="row g-2">
         <div class="col mb-0">
             <label for="emailWithTitle" class="form-label">Email</label>
-            <input type="email" id="emailWithTitle" name="email" class="form-control" required value="{{ old('email') }}" placeholder="xxxx@xxx.xx" />
-            <input type="password" name="password" class="d-none" value="12345678">
+            <input type="email" id="emailWithTitle" name="email" class="form-control @error('email') is-invalid @enderror" required value="{{ old('email') }}" placeholder="xxxx@xxx.xx" />
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <div class="col mb-0">
             <label for="dobWithTitle" class="form-label">Roles</label>
@@ -28,19 +37,34 @@
                 <option value="2" @selected(old('role_id') == 2)>Petugas</option>
                 <option value="3" @selected(old('role_id') == 3)>Warga</option>
             </select>
+            @error('role_id')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
     </div>
     @else
     <div class="row">
         <div class="col mb-3">
             <label for="nameWithTitle" class="form-label">Name</label>
-            <input type="text" id="nameWithTitle" name="name" class="form-control" required value="{{ $user->name ?? old('name') }}" placeholder="Enter Name" />
+            <input type="text" id="nameWithTitle" name="name" class="form-control @error('name') is-invalid @enderror" required value="{{ $user->name ?? old('name') }}" placeholder="Enter Name" />
+            @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
     </div>
     <div class="row g-2">
         <div class="col mb-0">
             <label for="emailWithTitle" class="form-label">Email</label>
-            <input type="email" id="emailWithTitle" name="email" class="form-control" required value="{{ $user->email ?? old('email') }}" placeholder="xxxx@xxx.xx" />
+            <input type="email" id="emailWithTitle" name="email" class="form-control @error('email') is-invalid @enderror" required value="{{ $user->email ?? old('email') }}" placeholder="xxxx@xxx.xx" />
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <div class="col mb-0">
             <label for="dobWithTitle" class="form-label">Roles</label>
@@ -49,6 +73,11 @@
                 <option value="2" @selected($user->role_id == 2)>Petugas</option>
                 <option value="3" @selected($user->role_id == 3)>Warga</option>
             </select>
+            @error('role_id')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
     </div>
     @endif
