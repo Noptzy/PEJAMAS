@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\StoreRequest;
 use App\Http\Requests\Users\UpdateRequest;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -37,7 +38,12 @@ class UserController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        User::create($request->all());
+        $user = $request->validated();
+        if($request->role_id == 2)
+        {
+            $user['email_verified_at'] = Carbon::now();
+        }
+        User::create($user);
         return back()->with(['success' => 'Successfully Add User']);
     }
 
@@ -78,6 +84,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return back()->with(['success', 'Successfully Delete User']);
+        return back()->with('success', 'Successfully Delete User');
     }
 }

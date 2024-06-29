@@ -73,6 +73,9 @@
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
+            @if ($message = Session::get('success'))
+                <x-toast-component :bg="'bg-success'" :type="'Success'" :message="$message" />
+            @endif
             <!-- Content -->
              @yield('content')
             <!-- / Content -->

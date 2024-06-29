@@ -34,9 +34,10 @@ Pejamas | Register
                   <label for="Name" class="form-label">Name</label>
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control @error('name') is-invalid @enderror"
                     id="name"
                     name="name"
+                    value="{{ old('name') }}"
                     placeholder="Enter your name"
                     autofocus
                     required
@@ -49,7 +50,7 @@ Pejamas | Register
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" required />
+                  <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}" name="email" placeholder="Enter your email" required />
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -62,7 +63,7 @@ Pejamas | Register
                     <input
                       type="password"
                       id="password"
-                      class="form-control"
+                      class="form-control @error('password') is-invalid @enderror"
                       name="password"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
