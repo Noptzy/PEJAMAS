@@ -18,7 +18,7 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
+:root {
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #222222; /* Color for headings, subheadings and title throughout the website */
@@ -1660,7 +1660,7 @@ section,
 }
 
 .faq .faq-container .faq-item h3:hover {
-  color: var(--accent-color);
+  color: #095303;
 }
 
 .faq .faq-container .faq-item .faq-content {
@@ -1709,7 +1709,7 @@ section,
 
 .faq .faq-container .faq-active .faq-toggle {
   transform: rotate(90deg);
-  color: var(--accent-color);
+  color: var(--contrast-color);
 }
 
 /*--------------------------------------------------------------

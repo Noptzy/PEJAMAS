@@ -20,8 +20,25 @@
             <li><a href="#about">Tentang Kami</a></li>
             <li><a href="#services">Pelayanan</a></li>
             <li><a href="#team">Team</a></li>
+            <li><a href="#faq">Faqs</a></li>
             <li><a href="#contact">Kontak</a></li>
+            @auth
+            <li class="dropdown"><a href="{{ route('dashboard.home') }}"><span>{{ Auth::user()->name }}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <span>Log Out</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+              </ul>
+            </li>
+            @else
             <li><a href="{{ route('login') }}">Login</a></li>
+            @endauth
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -111,27 +128,27 @@
 
           <div class="row gy-4">
 
-            <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
               <div class="service-item position-relative">
                 <div class="icon"><i class="bi bi-activity icon"></i></div>
                 <h4><a href="" class="stretched-link">Terhubung</a></h4>
-                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                <p>Mari hubungi kami dan bantu kami dalam membangun fasilitas yang baik!</p>
               </div>
             </div><!-- End Service Item -->
 
-            <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
               <div class="service-item position-relative">
                 <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
                 <h4><a href="" class="stretched-link">Terorganisir</a></h4>
-                <p>Sistem Kami Terorganisir Mulai Dari Warga/User, Administrator dan Petugas</p>
+                <p>Sistem kami terorganisir mulai dari warga, petugas, dan administrator.</p>
               </div>
             </div><!-- End Service Item -->
 
-            <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
               <div class="service-item position-relative">
                 <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
                 <h4><a href="" class="stretched-link">Up To Date</a></h4>
-                <p>Kami Selalu Mengupdate Pengaduan Yang Anda Berikan</p>
+                <p>Kami selalu memperbarui laporan yang anda kirimkan, mari melapor karena semuanya gratis!</p>
               </div>
             </div><!-- End Service Item -->
           </div>
@@ -244,9 +261,9 @@
 
       <div class="container">
 
-        <div class="row gy-4">
+        <div class="row gy-4 justify-content-center">
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="team-member">
               <div class="member-img">
                 <img src="{{asset('BizLand/waktuny.jpeg')}}" class="img-fluid" alt="">
@@ -258,7 +275,7 @@
             </div>
           </div><!-- End Team Member -->
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="team-member">
               <div class="member-img">
                 <img src="{{asset('BizLand/waktuny.jpeg')}}" class="img-fluid" alt="">
@@ -270,7 +287,7 @@
             </div>
           </div><!-- End Team Member -->
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
             <div class="team-member">
               <div class="member-img">
                 <img src="{{asset('BizLand/waktuny.jpeg')}}" class="img-fluid" alt="">
@@ -282,13 +299,25 @@
             </div>
           </div><!-- End Team Member -->
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
             <div class="team-member">
               <div class="member-img">
                 <img src="{{asset('BizLand/waktuny.jpeg')}}" class="img-fluid" alt="">
               </div>
               <div class="member-info">
-                <h4>Adam Albadi Timoti</h4>
+                <h4>Adam Albadi Timmothy</h4>
+                <span>Fullstack</span>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="{{asset('BizLand/waktuny.jpeg')}}" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Azkia Hanif</h4>
                 <span>Anggota</span>
               </div>
             </div>
@@ -299,17 +328,6 @@
       </div>
 
     </section><!-- /Team Section -->
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Harga</h2>
-        <p><span>Pelayanan Kami</span> <span class="description-title">Tidak Memungut Biaya</span></p>
-      </div><!-- End Section Title -->
-
-    </section><!-- /Pricing Section -->
 
     <!-- Faq Section -->
     <section id="faq" class="faq section">
@@ -328,7 +346,7 @@
 
             <div class="faq-container">
 
-              <div class="faq-item faq  ">
+              <div class="faq-item faq-active">
                 <h3>Bagaimana cara melaporkan kerusakan jalan?</h3>
                 <div class="faq-content">
                   <p>Untuk melaporkan kerusakan jalan, Anda perlu membuat akun terlebih dahulu. Setelah mendaftar, Anda harus mengunggah foto KTP Anda untuk proses verifikasi. Setelah akun Anda diverifikasi (paling lama 1x24 jam), Anda dapat mengirimkan pengaduan melalui halaman pengguna. Pastikan untuk melengkapi detail pengaduan dengan foto dan deskripsi kerusakan.</p>
@@ -439,27 +457,51 @@
           </div>
 
           <div class="col-lg-7">
-            <form action="" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
+                @if ($message = Session::get('success') || session('success'))
+                    <span class="text-primary">{{ $message }}</span>
+                @endif
+            <form action="{{ route('contact.user') }}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                @csrf
+                <div class="row gy-4">
 
                 <div class="col-md-6">
                   <label for="name-field" class="pb-2">Nama</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                  <input type="text" name="name"  value="{{ Auth::user()->name ?? old('name') }}" id="name-field" class="form-control  @error('name') is-invalid @enderror" required="">
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="col-md-6">
                   <label for="email-field" class="pb-2">Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required="">
+                  <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{ Auth::user()->email ?? old('email') }}" name="email" id="email-field" required="">
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="col-md-12">
                   <label for="subject-field" class="pb-2">Perihal</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                  <input type="text" class="form-control @error('subject') is-invalid @enderror" name="subject" value="{{ old('subject') }}" id="subject-field" required="">
+                    @error('subject')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="col-md-12">
                   <label for="message-field" class="pb-2">Pesan</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                  <textarea class="form-control @error('message') is-invalid @enderror" name="message" rows="10" id="message-field" required="">{{ old('message') }}</textarea>
+                    @error('message')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="col-md-12 text-center">
@@ -487,6 +529,7 @@
 
     <div class="container footer-top">
       <div class="row gy-4">
+
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="d-flex align-items-center">
             <span class="sitename">PEJAMAS</span>
@@ -499,31 +542,46 @@
           </div>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
+        <div class="col-lg-2 col-md-4 footer-links">
           <h4>Useful Links</h4>
+          <ul class="row justify-stretch">
+            <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#hero">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#about">Tentang Kami</a></li>
+            <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#service">Pelayanan</a></li>
+            <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#team">Team</a></li>
+            <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#faq">Faqs</a></li>
+            <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#contact">Kontak</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Pelayanan</h4>
           <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#hero">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#about">Tentang Kami</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#service">Pelayanan</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#team">Team</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#contact">Kontak</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="">Login</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#services">Pelaporan kerusakan jalan</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#services">Pemantauan situs pengaudan</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#services">Informasi proses perbaikan</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#services">Feedback & Penilaian</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#services">Laporan & Statistik</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#services">Notifikasi Pengguna</a></li>
           </ul>
         </div>
 
         <div class="col-lg-4 col-md-12">
-          <h4>Ikuti Kami</h4>
-          <p>Jangan Ketinggalan, Ikuti Kami</p>
+          <h4>Sosial Media </h4>
+          <p>Jangan lupa ikuti kami disosial media untuk mendapatkan informasi yang menarik</p>
           <div class="social-links d-flex">
-            <a href="https://github.com/Noptzy/PEJAMAS"><i class="bi bi-github"></i></a>
+            <a href="javascript:void(0);"><i class="bi bi-twitter-x"></i></a>
+            <a href="javascript:void(0);"><i class="bi bi-facebook"></i></a>
+            <a href="javascript:void(0);"><i class="bi bi-instagram"></i></a>
+            <a href="javascript:void(0);"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
       </div>
     </div>
 
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">PEJAMAS</strong> <span>All Rights Reserved</span></p>
+    <div class="container copyright text-center">
+      <p>© <span>Copyright</span> <strong class="sitename">PEJAMAS</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         Made By Love <a href="https://github.com/Noptzy/PEJAMAS">PEJAMAS</a>
       </div>

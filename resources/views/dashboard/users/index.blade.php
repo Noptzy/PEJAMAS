@@ -41,7 +41,7 @@ Pejamas | Users
                                 <th>Email</th>
                                 <th>Status</th>
                                 <th>Account</th>
-                                <th>Alamat</th>
+                                <th>Address</th>
                                 <th>Role</th>
                                 <th>Actions</th>
                             </tr>
@@ -84,7 +84,7 @@ Pejamas | Users
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            @if($user->details?->status == 0)
+                                            @if($user->details?->status == 0 && $user->role_id == 3)
                                             <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalVerify" onclick="userMethod(`{{ $user->id }}`, 'verify')"><i class="bx bx-check"></i>Verify</a>
                                             @endif
                                             <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalUsers" onclick="userMethod(`{{ $user->id }}`, 'crud')"><i class="bx bx-edit-alt"></i>Edit</a>
@@ -113,7 +113,7 @@ Pejamas | Users
                                 <th>Email</th>
                                 <th>Status</th>
                                 <th>Account</th>
-                                <th>Alamat</th>
+                                <th>Address</th>
                                 <th>Role</th>
                                 <th>Actions</th>
                             </tr>

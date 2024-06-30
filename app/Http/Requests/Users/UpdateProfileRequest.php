@@ -29,8 +29,8 @@ class UpdateProfileRequest extends FormRequest
             'phone' => ['required','string','max:15'],
             'identity' => ['required','string','max:15'],
             'gender' => ['required','IN:L,P'],
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'identity_image' => 'required|file|mimes:jpeg,png,jpg,pdf|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'identity_image' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:2048',
         ];
     }
 }
