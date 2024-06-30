@@ -33,6 +33,13 @@
                 <div data-i18n="Basic">Users</div>
             </a>
         </li>
+        <!-- Contact -->
+        <li class="menu-item {{ request()->is('dashboard/contacts') ? 'active' : '' }}">
+            <a href="{{ route('dashboard.contact') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-envelope"></i>
+                <div data-i18n="Basic">Contact</div>
+            </a>
+        </li>
         @endif
     </ul>
 </aside>
