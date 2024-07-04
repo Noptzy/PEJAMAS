@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Report;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ReportController extends Controller
+class FeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class ReportController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Report $report)
+    public function show(Feedback $feedback)
     {
         //
     }
@@ -42,7 +43,7 @@ class ReportController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Report $report)
+    public function edit(Feedback $feedback)
     {
         //
     }
@@ -50,7 +51,7 @@ class ReportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Report $report)
+    public function update(Request $request, Feedback $feedback)
     {
         //
     }
@@ -58,7 +59,7 @@ class ReportController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Report $report)
+    public function destroy(Feedback $feedback)
     {
         //
     }

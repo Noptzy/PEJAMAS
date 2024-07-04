@@ -1,12 +1,12 @@
 @extends('dashboard.layouts.app')
 
 @section('title')
-Pejamas | Contact
+Pejamas | Contacts
 @endsection
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h6 class="fw-bold py-0 mb-4"><span class="text-muted fw-light">Dashboard /</span> Contact</h6>
+    <h6 class="fw-bold py-0 mb-4"><span class="text-muted fw-light">Dashboard /</span> Contacts</h6>
     <div class="row">
         <div class="col-lg-12 col-md-12 order-1">
             <div class="col-md-3 py-3" style="margin-top: -30px;">
