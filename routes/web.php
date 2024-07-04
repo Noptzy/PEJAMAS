@@ -16,5 +16,6 @@ Route::group(['middleware' => 'auth', 'as' => 'dashboard.', 'prefix' => 'dashboa
     Route::post('/profiles', [HomeController::class, 'updateProfile'])->name('profile.update');
     Route::resource('users', UserController::class);
 });
+
 Auth::routes();
 
