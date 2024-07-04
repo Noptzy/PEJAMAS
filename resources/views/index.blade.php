@@ -20,7 +20,7 @@
             <li><a href="#about">Tentang Kami</a></li>
             <li><a href="#services">Pelayanan</a></li>
             <li><a href="#team">Team</a></li>
-            <li><a href="#faq">Faqs</a></li>
+            <li><a href="#faq">FAQ</a></li>
             <li><a href="#contact">Kontak</a></li>
             @auth
             <li class="dropdown"><a href="{{ route('dashboard.home') }}"><span>{{ Auth::user()->name }}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -263,17 +263,17 @@
 
         <div class="row gy-4 justify-content-center">
 
-          <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
             <div class="team-member">
               <div class="member-img">
                 <img src="{{asset('BizLand/waktuny.jpeg')}}" class="img-fluid" alt="">
               </div>
               <div class="member-info">
                 <h4>Tegar Dinar Harsya Ibrahim</h4>
-                <span>Anggota</span>
+                <span>Leader</span>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div>
 
           <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="team-member">
@@ -285,7 +285,7 @@
                 <span>Anggota</span>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div>
 
           <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
             <div class="team-member">
@@ -294,10 +294,10 @@
               </div>
               <div class="member-info">
                 <h4>Rohendi Adiputra</h4>
-                <span>Anggota</span>
+                <span>UI/UX Desainer</span>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div>
 
           <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
             <div class="team-member">
@@ -309,7 +309,7 @@
                 <span>Fullstack</span>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div>
 
           <div class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
             <div class="team-member">
@@ -318,7 +318,7 @@
               </div>
               <div class="member-info">
                 <h4>Azkia Hanif</h4>
-                <span>Anggota</span>
+                <span>Server Management</span>
               </div>
             </div>
           </div><!-- End Team Member -->
@@ -346,7 +346,7 @@
 
             <div class="faq-container">
 
-              <div class="faq-item faq-active">
+              <div class="faq-item faq">
                 <h3>Bagaimana cara melaporkan kerusakan jalan?</h3>
                 <div class="faq-content">
                   <p>Untuk melaporkan kerusakan jalan, Anda perlu membuat akun terlebih dahulu. Setelah mendaftar, Anda harus mengunggah foto KTP Anda untuk proses verifikasi. Setelah akun Anda diverifikasi (paling lama 1x24 jam), Anda dapat mengirimkan pengaduan melalui halaman pengguna. Pastikan untuk melengkapi detail pengaduan dengan foto dan deskripsi kerusakan.</p>
@@ -547,22 +547,10 @@
           <ul class="row justify-stretch">
             <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#hero">Home</a></li>
             <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#about">Tentang Kami</a></li>
-            <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#service">Pelayanan</a></li>
+            <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#services">Pelayanan</a></li>
             <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#team">Team</a></li>
-            <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#faq">Faqs</a></li>
+            <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#faq">FAQ</a></li>
             <li><i class="bi bi-chevron-right"></i><a class="text-muted" href="#contact">Kontak</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Pelayanan</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#services">Pelaporan kerusakan jalan</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#services">Pemantauan situs pengaudan</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#services">Informasi proses perbaikan</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#services">Feedback & Penilaian</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#services">Laporan & Statistik</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#services">Notifikasi Pengguna</a></li>
           </ul>
         </div>
 
@@ -570,10 +558,7 @@
           <h4>Sosial Media </h4>
           <p>Jangan lupa ikuti kami disosial media untuk mendapatkan informasi yang menarik</p>
           <div class="social-links d-flex">
-            <a href="javascript:void(0);"><i class="bi bi-twitter-x"></i></a>
-            <a href="javascript:void(0);"><i class="bi bi-facebook"></i></a>
-            <a href="javascript:void(0);"><i class="bi bi-instagram"></i></a>
-            <a href="javascript:void(0);"><i class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/Noptzy/PEJAMAS"><i class="bi bi-github"></i></a>
           </div>
         </div>
 
