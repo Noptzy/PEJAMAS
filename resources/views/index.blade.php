@@ -293,7 +293,7 @@
                 <img src="{{asset('BizLand/waktuny.jpeg')}}" class="img-fluid" alt="">
               </div>
               <div class="member-info">
-                <h4>Rohendi Adi Putra</h4>
+                <h4>Rohendi Adiputra</h4>
                 <span>Anggota</span>
               </div>
             </div>
@@ -305,7 +305,7 @@
                 <img src="{{asset('BizLand/waktuny.jpeg')}}" class="img-fluid" alt="">
               </div>
               <div class="member-info">
-                <h4>Adam Albadi Timmothy</h4>
+                <h4>Adam Albani Timmothy</h4>
                 <span>Fullstack</span>
               </div>
             </div>
