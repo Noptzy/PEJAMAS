@@ -37,7 +37,7 @@
         <li class="menu-item {{ request()->is('dashboard/contacts') ? 'active' : '' }}">
             <a href="{{ route('dashboard.contact') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-envelope"></i>
-                <div data-i18n="Basic">Contact</div>
+                <div data-i18n="Basic">Contacts</div>
             </a>
         </li>
         @endif
