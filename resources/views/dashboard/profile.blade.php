@@ -10,13 +10,21 @@ Pejamas | Account
     <div class="col-lg-12 col-md-12 order-1">
         <div class="row">
             <div class="card mb-4">
-                <h5 class="card-header">Profile Details</h5>
+                <h5 class="card-header">Profile Details
+                    @if($user->role_id == 3)
+                        @if($user->details?->status)
+                            <span class="text-primary font-light">( {{ $user->details?->status_info }} )</span>
+                        @else
+                            <span class="text-danger font-light">( {{ $user->details?->status_info }} )</span>
+                        @endif
+                    @endif
+                </h5>
                 <!-- Account -->
                 <form id="formAccountSettings" method="POST" action="{{ route('dashboard.profile.update') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                            <img src="{{ $user->details->image_url ?? asset('backend/img/avatars/profile.png') }}"
+                            <img src="{{ $user->details?->image_url ?? asset('backend/img/avatars/profile.png') }}"
                             alt="user-avatar"
                             class="d-block rounded"
                             height="100"
@@ -26,7 +34,7 @@ Pejamas | Account
                                 <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                                     <span class="d-none d-sm-block">Upload new photo</span>
                                     <i class="bx bx-upload d-block d-sm-none"></i>
-                                    <input type="file" id="upload" name="image" class="account-file-input" hidden accept="image/*" />
+                                    <input type="file" id="upload" name="image" class="account-file-input d-none" accept="image/*" />
                                 </label>
                                 <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
                                     <i class="bx bx-reset d-block d-sm-none"></i>
@@ -69,10 +77,14 @@ Pejamas | Account
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="formFile" class="form-label">Identity Card</label>
-                                    @if ($user->details?->image)
+                                    @if($user->details?->identity_image)
                                         <a href="{{ $user->details?->image_identity_url }}" target="_blank">Open File</a>
                                     @endif
-                                    <input class="form-control @error('identity_image') is-invalid @enderror" type="file" name="identity_image" id="formFile" />
+                                    @if ($user->details?->status == 1)
+                                        <input class="form-control @error('identity_image') is-invalid @enderror" disabled type="file" name="identity_image" id="formFile" />
+                                    @else
+                                        <input class="form-control @error('identity_image') is-invalid @enderror" type="file" name="identity_image" id="formFile" />
+                                    @endif
                                     @error('identity_image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -85,10 +97,10 @@ Pejamas | Account
                                 </div>
                                 <div class="mb-3 col-md-6">
                                 <label for="genderSelect" class="form-label">Gender</label>
-                                    <select class="form-select" id="genderSelect" name="gender" aria-label="Default select example">
+                                    <select class="form-select @error('gender') is-invalid @enderror" id="genderSelect" name="gender" aria-label="Default select example">
                                         <option disabled selected>Select</option>
-                                        <option value="L" @selected($user->details->gender ?? old('gender') == 'L')>Man</option>
-                                        <option value="P" @selected($user->details->gender ?? old('gender') == 'P')>Woman</option>
+                                        <option value="L" @selected($user->details?->gender == 'L')>Man</option>
+                                        <option value="P" @selected($user->details?->gender == 'P')>Woman</option>
                                     </select>
                                     @error('gender')
                                         <span class="invalid-feedback" role="alert">

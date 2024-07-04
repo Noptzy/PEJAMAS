@@ -59,6 +59,7 @@
 
   <body>
     @auth
+    @if (auth()->user()->hasVerifiedEmail())
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -93,6 +94,9 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
+    @else
+        @yield('content')
+    @endif
     @else
         @yield('content')
     @endauth
