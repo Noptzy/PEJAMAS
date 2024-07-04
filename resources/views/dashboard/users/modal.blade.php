@@ -34,8 +34,12 @@
             <label for="dobWithTitle" class="form-label">Roles</label>
             <select class="form-select" id="selectRole" name="role_id" required aria-label="Default select example">
                 <option selected disabled>Select</option>
-                <option value="2" @selected(old('role_id') == 2)>Petugas</option>
-                <option value="3" @selected(old('role_id') == 3)>Warga</option>
+                @if(Auth::user()->role_id == 1)
+                    <option value="2" @selected(old('role_id') == 2)>Petugas</option>
+                    <option value="3" @selected(old('role_id') == 3)>Warga</option>
+                @else
+                    <option value="3" @selected(old('role_id') == 3)>Warga</option>
+                @endif
             </select>
             @error('role_id')
                 <span class="invalid-feedback" role="alert">
@@ -70,8 +74,12 @@
             <label for="dobWithTitle" class="form-label">Roles</label>
             <select class="form-select" id="selectRole" name="role_id" required aria-label="Default select example">
                 <option disabled>Select</option>
-                <option value="2" @selected($user->role_id == 2)>Petugas</option>
-                <option value="3" @selected($user->role_id == 3)>Warga</option>
+                @if(Auth::user()->role_id == 1)
+                    <option value="2" @selected($user->role_id == 2)>Petugas</option>
+                    <option value="3" @selected($user->role_id == 3)>Warga</option>
+                @else
+                    <option value="3" @selected($user->role_id == 3)>Warga</option>
+                @endif
             </select>
             @error('role_id')
                 <span class="invalid-feedback" role="alert">

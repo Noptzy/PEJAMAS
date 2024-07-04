@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('identity')->nullable();
             $table->longtext('address')->nullable();
             $table->string('zip_code')->nullable();
+            $table->boolean('status')->default(0);
             $table->string('state')->nullable();
             $table->string('phone')->nullable();
             $table->enum('gender',['L','P'])->nullable();

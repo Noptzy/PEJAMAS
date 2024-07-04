@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\UpdateProfileRequest;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
-use Str;
+use Illuminate\Support\Facades\File;
 
 class HomeController extends Controller
 {
@@ -46,7 +45,7 @@ class HomeController extends Controller
 
             if($request->image)
             {
-                if ($user->details->image && File::exists(public_path('assets/images/profile/' . $user->details->image))) {
+                if ($user->details?->image && File::exists(public_path('assets/images/profile/' . $user->details->image))) {
                     File::delete(public_path('assets/images/profile/' . $user->details->image));
                 }
                 $userDetails->image = $this->imageHandler($request->image, 'profile');
@@ -54,7 +53,7 @@ class HomeController extends Controller
 
             if($request->identity_image)
             {
-                if ($user->details->identity_image && File::exists(public_path('assets/images/identity/' . $user->details->identity_image))) {
+                if ($user->details?->identity_image && File::exists(public_path('assets/images/identity/' . $user->details->identity_image))) {
                     File::delete(public_path('assets/images/identity/' . $user->details->identity_image));
                 }
                 $userDetails->identity_image = $this->imageHandler($request->identity_image, 'identity');
@@ -64,8 +63,8 @@ class HomeController extends Controller
 
             return back()->with('success', 'Succefully update profile');
         } catch (\Throwable $th) {
-            dd($th->getMessage());
-            return back()->with('errors', $th->getMessage());
+            return response()->json(['errors' => $th->getMessage()]);
+            return back()->with('error', $th->getMessage());
         }
     }
 
@@ -85,6 +84,7 @@ class HomeController extends Controller
 
             return $imageName;
         } catch (\Throwable $th) {
+            dd($th->getMessage());
             return null;
         }
     }

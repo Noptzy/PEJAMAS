@@ -11,7 +11,17 @@ class UserDetail extends Model
 
     protected $primaryKey = 'user_id';
 
-    protected $fillable = ['user_id', 'image', 'identity', 'identity_image', 'address', 'zip_code', 'state', 'phone', 'gender'];
+    protected $fillable = ['user_id', 'image', 'identity', 'identity_image', 'status', 'address', 'zip_code', 'state', 'phone', 'gender'];
+
+    protected function getStatusInfoAttribute()
+    {
+        return $this->status ? 'verified' : 'not verified';
+    }
+
+    protected function getCompleteAddressAttribute()
+    {
+        return $this->address . ', ' .$this->state. ', ' . $this->zip_code;
+    }
 
     protected function getImageUrlAttribute()
     {
