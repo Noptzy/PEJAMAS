@@ -11,9 +11,13 @@ class toastComponent extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $type;
+    public $message;
+
+    public function __construct($type, $message)
     {
-        //
+        $this->type = $type;
+        $this->message = $message;
     }
 
     /**
@@ -21,6 +25,8 @@ class toastComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.toast-component');
+        $type = $this->type;
+        $message = $this->message;
+        return view('components.toast-component', compact('type','message'));
     }
 }

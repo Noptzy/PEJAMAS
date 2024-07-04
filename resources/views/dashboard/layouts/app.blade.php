@@ -75,7 +75,7 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             @if ($message = Session::get('success'))
-                <x-toast-component :bg="'bg-success'" :type="'Success'" :message="$message" />
+                <x-toast-component :type="'Success'" :message="$message" />
             @endif
             <!-- Content -->
              @yield('content')
