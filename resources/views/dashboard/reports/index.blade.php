@@ -5,31 +5,24 @@ Pejamas | Reports
 @endsection
 
 @section('content')
-@if ($errors->any() || $errors)
-@if(!$errors->any)
-<x-toast-component :bg="'bg-danger'" :type="'Failed'" :message="$error" />
-@endif
-@foreach ($errors->all() as $key => $error)
-<x-toast-component :bg="'bg-danger'" :type="'Failed'" :message="$error" />
-@endforeach
-@endif
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h6 class="fw-bold py-0 mb-4"><span class="text-muted fw-light">Dashboard /</span> Users</h6>
+    <h6 class="fw-bold py-0 mb-4"><span class="text-muted fw-light">Dashboard /</span> Reports</h6>
     <div class="row">
         <div class="col-lg-12 col-md-12 order-1">
             <div class="col-md-3 py-3" style="margin-top: -30px;">
-                <form action="{{ route('dashboard.users.index') }}" method="GET">
+                <form action="{{ route('dashboard.reports.index') }}" method="GET">
                     <input class="form-control" type="search" value="{{ request()->query('search') }}" name="search" placeholder="Search" id="html5-search-input">
                 </form>
             </div>
             <div class="card">
                 <div class="card-top d-lg-lex">
                     <div class="d-flex justify-content-between">
-                        <h5 class="card-header">Data Users</h5>
+                        <h5 class="card-header">Data Reports</h5>
+                        @if (Auth::user()->role_id == 3)
                         <div class="button-add p-3" style="margin-right: 15px;">
-                            <a href="javascript::void(0);" class="btn btn-primary d-grid text-white font-serif"
-                            data-bs-toggle="modal" data-bs-target="#modalUsers" onclick="userMethod(0,'crud')">Add User</a>
+                            <a href="{{ route('dashboard.reports.create') }}" class="btn btn-primary d-grid text-white font-serif" target="_blank">Add Reports</a>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <div class="table-responsive text-nowrap">
@@ -37,63 +30,49 @@ Pejamas | Reports
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Name</th>
-                                <th>Email</th>
+                                <th>Title</th>
+                                <th>Description</th>
                                 <th>Status</th>
-                                <th>Account</th>
                                 <th>Address</th>
-                                <th>Role</th>
+                                <th>Coordinate</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if($users->count())
-                            @foreach ( $users as $key => $user)
+                            @if($reports->count())
+                            @foreach ($reports as $key => $report)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td><i class="fab fa-lg text-danger "></i> <strong>{{ $user->name }}</strong></td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->status }}</td>
+                                <td><i class="fab fa-lg text-danger "></i> <strong>{{ $report->title }}</strong></td>
+                                <td>{{ $report->description }}</td>
                                 <td>
                                     <span class="badge
-                                                    @if($user->role_id == 2) bg-label-secondary
-                                                    @elseif($user->details?->status == 1) bg-label-secondary
-                                                    @else bg-label-danger
-                                                    @endif">
-                                        @if($user->role_id == 2)
-                                        verified
-                                        @else
-                                        {{ $user->details?->status_info ?? 'not verified' }}
+                                    @if($report->status == 'review')
+                                        bg-label-warning
+                                    @elseif($report->status == 'checking')
+                                        bg-label-secondary
+                                    @elseif($report->status == 'proggress')
+                                        bg-label-info
+                                    @else
+                                        bg-label-success
+                                    @endif">
+                                        {{ $report->status }}
+                                    </span>
+                                </td>
+                                <td>{{ $report->address }}</td>
+                                <td>{{ $report->lat.','.$report->long }}</td>
+                                <td>
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        @if(Auth::user()->role_id == 2)
+                                        <a href="javascript:void(0);" class="dropdown-item"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalChangeStatus"
+                                        onclick="changeStatus(`{{ $report->id }}`)"><i class="bx bx-edit-alt"></i>Change Status</a>
                                         @endif
-                                    </span>
-                                </td>
-                                <td>
-                                    {{ $user->details?->complete_address ?? '-' }}
-                                </td>
-                                <td>
-                                    <span class="badge
-                                                    @if($user->role_id == 2) bg-label-primary
-                                                    @else bg-label-secondary
-                                                    @endif">
-                                        {{ $user->roles->role }}
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            @if($user->details?->status == 0 && $user->role_id == 3)
-                                            <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalVerify" onclick="userMethod(`{{ $user->id }}`, 'verify')"><i class="bx bx-check"></i>Verify</a>
-                                            @endif
-                                            <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modalUsers" onclick="userMethod(`{{ $user->id }}`, 'crud')"><i class="bx bx-edit-alt"></i>Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);" onclick="confirmDelete(`{{ $user->id }}`)"><i class="bx bx-trash"></i> Delete</a>
-                                            <form id="delete-form-{{ $user->id }}" action="{{ route('dashboard.users.destroy', $user->id) }}" method="POST" style="display: none;">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
-                                        </div>
+                                        <a class="dropdown-item" href="{{ route('dashboard.reports.create', ['reportId' => $report->id]) }}"><i class="bx bx-show"></i>Show</a>
                                     </div>
                                 </td>
                             </tr>
@@ -101,7 +80,7 @@ Pejamas | Reports
                             @else
                             <tr>
                                 <td class="text-center align-middle" colspan="100%">
-                                    No User Data
+                                    No Data
                                 </td>
                             </tr>
                             @endif
@@ -109,68 +88,47 @@ Pejamas | Reports
                         <tfoot class="table-border-bottom-0">
                             <tr>
                                 <th>No</th>
-                                <th>Name</th>
-                                <th>Email</th>
+                                <th>Title</th>
+                                <th>Description</th>
                                 <th>Status</th>
-                                <th>Account</th>
                                 <th>Address</th>
-                                <th>Role</th>
+                                <th>Coordinate</th>
                                 <th>Actions</th>
                             </tr>
                         </tfoot>
                     </table>
                     <div class="d-flex justify-content-end">
-                        {{ $users->appends(request()->query())->links('vendor.pagination.tailwind') }}
+                        {{ $reports->appends(request()->query())->links('vendor.pagination.tailwind') }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-@component('components.modal-component', [
-    'id' => 'modalUsers'])
-@endcomponent
-
-@component('components.modal-component', [
-    'id' => 'modalVerify'])
-@endcomponent
-
+<!-- Modal -->
+<div class="modal fade" id="modalChangeStatus" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div id="loadModal"></div>
+        </div>
+    </div>
+</div>
 @endsection
-
 @push('custom-js')
 <script>
     // load users modal
-    function userMethod(userId, status) {
-
-        if(status == 'crud')
-        {
-            $.ajax({
-                type: 'GET',
-                url: '/dashboard/users/' + userId,
-                success: function(response) {
-                    $("#loadModal").html(response);
-                    console.log(response);
-                },
-                error: function(response) {
-                    console.log(response);
-                }
-            });
-        }
-
-        else{
-            $.ajax({
-                type: 'GET',
-                url: '/dashboard/users/verify/' + userId,
-                success: function(response) {
-                    $("#loadModalVerify").html(response);
-                    console.log(response);
-                },
-                error: function(response) {
-                    console.log(response);
-                }
-            });
-        }
+    function changeStatus(reportId) {
+        $.ajax({
+            type: 'GET',
+            url: '/dashboard/reports/show/' + reportId,
+            success: function(response) {
+                $("#loadModal").html(response);
+                console.log(response);
+            },
+            error: function(response) {
+                console.log(response);
+            }
+        });
     }
     // delete user
     function confirmDelete(userId) {

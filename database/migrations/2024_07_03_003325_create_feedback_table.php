@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('report_id');
+            $table->string('description');
+            $table->tinyInteger('rating');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

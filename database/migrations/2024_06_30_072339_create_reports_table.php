@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id('id');
-            $table->integer('user_id');
+            $table->foreignId('user_id');
             $table->string('title');
             $table->string('description');
             $table->enum('status',['review','checking','proggress','done']);
@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('lat');
             $table->string('long');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

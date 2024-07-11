@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('image_reports', function (Blueprint $table) {
             $table->id();
-            $table->string('report_id');
-            $table->string('filename');
+            $table->foreignId('report_id');
+            $table->string('filename')->nullable();
             $table->timestamps();
+
+            $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
         });
     }
 

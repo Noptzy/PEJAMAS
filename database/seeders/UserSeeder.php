@@ -23,6 +23,13 @@ class UserSeeder extends Seeder
             'role_id' => 1,
         ]);
         User::create([
+            'name' => 'Adam Albani Timmothy',
+            'email' => 'adam@pejamas.com',
+            'password' => Hash::make('12345678'),
+            'email_verified_at' => Carbon::now(),
+            'role_id' => 3,
+        ]);
+        User::create([
             'name' => 'Petugas',
             'email' => 'petugas@pejamas.com',
             'password' => Hash::make('12345678'),

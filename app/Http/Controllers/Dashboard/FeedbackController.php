@@ -5,15 +5,43 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Report;
+use Illuminate\Support\Facades\Auth;
 
 class FeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('checkUserProfile');
+    }
+
+    public function index(Request $request)
+    {
+        $query = Feedback::query();
+        $user_id = Auth::user()->id;
+        $feedbacks = [];
+
+        if ($request->filled('search')) {
+
+            $searchTerm = $request->input('search');
+            $query->where('title', 'LIKE', '%'. $searchTerm . '%')
+                  ->orWhere('address','LIKE',  '%'. $searchTerm . '%')
+                  ->orWhere('lat','LIKE',  '%'. $searchTerm . '%')
+                  ->orWhere('long','LIKE',  '%'. $searchTerm . '%')
+                  ->orWhere('status','LIKE',  '%'. $searchTerm . '%');
+        }
+
+        $feedbacks = $query->with(['report','user'])->orderBy('created_at', 'ASC')->paginate(10);
+
+        if(Auth::user()->role_id == 3)
+        {
+            $feedbacks = $query->orderBy('created_at', 'ASC')->where('user_id', $user_id)->paginate(10);
+        }
+
+        return view('dashboard.feedback.index',compact('feedbacks','user_id'));
     }
 
     /**
@@ -29,15 +57,17 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Feedback::create($request->all());
+        return back()->with('success', 'Success create feedbacks, Thank You!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Feedback $feedback)
+    public function show($userId)
     {
-        //
+        $reports = Report::where('user_id', $userId)->where('status','done')->get();
+        return view('dashboard.feedback.modal', compact('reports', 'userId'));
     }
 
     /**

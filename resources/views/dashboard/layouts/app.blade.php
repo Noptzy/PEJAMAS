@@ -28,10 +28,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="{{ asset('backend/vendor/fonts/boxicons.css') }}" />
@@ -74,6 +71,14 @@
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
+            @if (session('error'))
+                <x-toast-component :bg="'bg-danger'" :type="'Failed'" :message="session('error')" />
+            @endif
+            @if ($errors)
+                @foreach ($errors->all() as $key => $error)
+                <x-toast-component :bg="'bg-danger'" :type="'Failed'" :message="$error" />
+                @endforeach
+            @endif
             @if ($message = Session::get('success'))
                 <x-toast-component :type="'Success'" :message="$message" />
             @endif

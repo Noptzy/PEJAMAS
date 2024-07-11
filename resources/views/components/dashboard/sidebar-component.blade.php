@@ -33,11 +33,30 @@
                 <div data-i18n="Basic">Users</div>
             </a>
         </li>
+        @elseif(Auth::user()->role_id == 1)
         <!-- Contact -->
         <li class="menu-item {{ request()->is('dashboard/contacts') ? 'active' : '' }}">
             <a href="{{ route('dashboard.contact') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-envelope"></i>
                 <div data-i18n="Basic">Contacts</div>
+            </a>
+        </li>
+        @endif
+        @if (Auth::user()->role_id != 1)
+        <!-- Reports -->
+        <li class="menu-item {{ request()->is('dashboard/reports*') ? 'active' : '' }}">
+            <a href="{{ route('dashboard.reports.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Basic">Reports</div>
+            </a>
+        </li>
+        @endif
+        @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 3)
+        <!-- Feedbacks -->
+        <li class="menu-item {{ request()->is('dashboard/feedbacks*') ? 'active' : '' }}">
+            <a href="{{ route('dashboard.feedbacks.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-message-dots"></i>
+                <div data-i18n="Basic">Feedbacks</div>
             </a>
         </li>
         @endif

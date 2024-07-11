@@ -1,7 +1,7 @@
 
 <div class="bs-toast toast toast-placement-ex m-2 fade top-0 end-0
-    @if ($errors->any()) bg-danger @else bg-success @endif
-    @if($errors->any() || session('success')) show @else hidden @endif"
+    @if ($type == 'Failed' ) bg-danger @else bg-success @endif
+    @if($errors || session('success') || $success) show @else hidden @endif"
     role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
     <div class="toast-header">
         <i class="bx bx-bell me-2"></i>
