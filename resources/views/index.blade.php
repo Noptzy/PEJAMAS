@@ -306,7 +306,7 @@
               </div>
               <div class="member-info">
                 <h4>Adam Albani Timmothy</h4>
-                <span>Fullstack</span>
+                <span>Anggota</span>
               </div>
             </div>
           </div>

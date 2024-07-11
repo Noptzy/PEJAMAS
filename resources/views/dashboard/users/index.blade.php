@@ -5,14 +5,6 @@ Pejamas | Users
 @endsection
 
 @section('content')
-@if ($errors->any() || $errors)
-@if(!$errors->any)
-<x-toast-component :bg="'bg-danger'" :type="'Failed'" :message="$error" />
-@endif
-@foreach ($errors->all() as $key => $error)
-<x-toast-component :bg="'bg-danger'" :type="'Failed'" :message="$error" />
-@endforeach
-@endif
 <div class="container-xxl flex-grow-1 container-p-y">
     <h6 class="fw-bold py-0 mb-4"><span class="text-muted fw-light">Dashboard /</span> Users</h6>
     <div class="row">

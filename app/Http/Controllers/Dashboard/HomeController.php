@@ -64,7 +64,6 @@ class HomeController extends Controller
             return back()->with('success', 'Succefully update profile');
         } catch (\Throwable $th) {
             return response()->json(['errors' => $th->getMessage()]);
-            return back()->with('error', $th->getMessage());
         }
     }
 
@@ -84,7 +83,6 @@ class HomeController extends Controller
 
             return $imageName;
         } catch (\Throwable $th) {
-            dd($th->getMessage());
             return null;
         }
     }
