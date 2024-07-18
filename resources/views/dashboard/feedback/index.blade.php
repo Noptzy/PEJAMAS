@@ -8,7 +8,7 @@ Pejamas | Feedbacks
 <style>
     .rate {
         border-bottom-right-radius: 12px;
-        border-bottom-left-radius: 12px
+        border-bottom-left-radius: 12px;
     }
 
     .rating {
@@ -34,6 +34,15 @@ Pejamas | Feedbacks
         content: "\2605";
         position: absolute;
         opacity: 0
+    }
+
+    .ratings{
+        position: relative;
+        width: 1em;
+        font-size: 30px;
+        font-weight: 300;
+        color: #FFD600;
+        cursor: pointer;
     }
 
     .rating>label:hover:before,
@@ -89,22 +98,36 @@ Pejamas | Feedbacks
                         </thead>
                         <tbody>
                             @if($feedbacks->count())
-                            @foreach ($feedbacks as $key => $feedback)
-                            <tr>
-                                <td>{{ $key+1 }}</td>
-                                @if (Auth::user()->role_id == 1)
-                                <td>{{ $feedback->report->title }}</td>
-                                <td>{{ $feedback->user->name }}</td>
-                                <td>{{ $feedback->status }}</td>
-                                @endif
-                                <td>
-                                    {{ $feedback->rating }}
-                                </td>
-                                <td>
-                                    {{ $feedback->description }}
-                                </td>
-                            </tr>
-                            @endforeach
+                                @foreach ($feedbacks as $key => $feedback)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    @if (Auth::user()->role_id == 1)
+                                        <td>{{ $feedback->report->title }}</td>
+                                        <td>{{ $feedback->user->name }}</td>
+                                        <td>
+                                            <form action="{{ route('dashboard.feedbacks.statusChange', ['id' => $feedback->id]) }}" method="POST" id="status-form">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="form-check form-switch mb-2">
+                                                    <input class="form-check-input cursor-pointer" name="status"
+                                                    onclick="event.preventDefault(); document.getElementById('status-form').submit();"
+                                                    type="checkbox" {{ $feedback->status ? 'checked' : '' }} ">
+                                                </div>
+                                            </form>
+                                        </td>
+                                    @endif
+                                    <td>
+                                        <div class="rating">
+                                            @for ($i = 0; $i < $feedback->rating; $i++)
+                                                <input type="radio" checked ><label for="{{$i}}">☆</label>
+                                            @endfor
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{ $feedback->description }}
+                                    </td>
+                                </tr>
+                                @endforeach
                             @else
                             <tr>
                                 <td class="text-center align-middle" colspan="100%">
@@ -117,9 +140,9 @@ Pejamas | Feedbacks
                             <tr>
                                 <th>No</th>
                                 @if (Auth::user()->role_id == 1)
-                                <th>Report</th>
-                                <th>User</th>
-                                <th>Status</th>
+                                    <th>Report</th>
+                                    <th>User</th>
+                                    <th>Status</th>
                                 @endif
                                 <th>Rating</th>
                                 <th>Description</th>

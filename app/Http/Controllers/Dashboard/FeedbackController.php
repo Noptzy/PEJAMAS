@@ -57,6 +57,11 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
+        $reportChecker = Report::where('id', $request->report_id)->first();
+        if(!$reportChecker || $reportChecker?->status != 'done')
+        {
+            return back()->with('error', 'Report tidak ditemukan');
+        }
         Feedback::create($request->all());
         return back()->with('success', 'Success create feedbacks, Thank You!');
     }
@@ -68,6 +73,27 @@ class FeedbackController extends Controller
     {
         $reports = Report::where('user_id', $userId)->where('status','done')->get();
         return view('dashboard.feedback.modal', compact('reports', 'userId'));
+    }
+
+    public function statusChange($id)
+    {
+        $feedback = Feedback::findOrFail($id);
+        try {
+
+            if($feedback->status)
+            {
+                $feedback->status = 0;
+            }else{
+                $feedback->status = 1;
+            }
+
+            $feedback->update();
+
+            return back()->with('success', 'Success update status!');
+        } catch (\Throwable $th) {
+
+            return back()->with('error', 'Failed to delete image: '.$th->getMessage());
+        }
     }
 
     /**

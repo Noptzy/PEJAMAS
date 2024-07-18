@@ -17,8 +17,20 @@ class HomeController extends Controller
     public function index()
     {
         $users = \App\Models\User::where('role_id', '!=', 1)->count();
+        $feedbacks = \App\Models\Feedback::count();
         $citizens = \App\Models\User::where('role_id', 3)->count();
-        return view('dashboard.index', compact('users', 'citizens'));
+        $reports = \App\Models\Report::count();
+        $reportDone = \App\Models\Report::where('status','done')->count();
+        $reportReview = \App\Models\Report::whereIn('status',['review','checking'])->count();
+        $reportProggress = \App\Models\Report::where('status','proggress')->count();
+        $maps = \App\Models\Report::all();
+        $allReports = [
+            'all' => $reports,
+            'done' => $reportDone,
+            'review' => $reportReview,
+            'proggress' => $reportProggress
+        ];
+        return view('dashboard.index', compact('users', 'citizens','feedbacks','allReports', 'maps'));
     }
 
     public function profile()

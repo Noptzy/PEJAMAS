@@ -78,7 +78,7 @@ class ReportController extends Controller
                 ]);
             }
         }
-        return back()->with('success', 'Report has been send, please for email confirmation');
+        return redirect()->route('dashboard.reports.index')->with('success', 'Report has been send, please for email confirmation');
     }
 
     /**
